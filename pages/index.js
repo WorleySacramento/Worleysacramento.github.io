@@ -20,26 +20,26 @@ export default function Home() {
             Bem vindo Ao meu Mundo
           </p>
           <div className={styles.profile}>
-              <Image
+              {/* <Image
                 src="/profile.jpg"
                 alt="Vercel Logo"
                 className={styles.foto}
                 width={150}
                 height={200}
                 priority
-              />
+              /> */}
           </div>
         </div>
 
         <div className={styles.center}>
-          {/* <Image
-            className={styles.logo}
-            src="/next.svg"
-            alt="Next.js Logo"
-            width={180}
-            height={37}
-            priority
-          /> */}
+        <Image
+                src="/profile.jpg"
+                alt="Vercel Logo"
+                className={styles.foto}
+                width={150}
+                height={150}
+                priority
+              />
         </div>
 
         <div className={styles.grid}>
