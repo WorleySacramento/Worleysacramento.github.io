@@ -38,6 +38,46 @@
   font-weight: 700;
   font-family: var(--font-mono);
 }
+.foto{
+  border-radius: 15rem;
+}
+
+.profile{
+border-radius: 15rem;
+
+}
+.profile {
+	-webkit-animation: profile 0.65s ease-out both;
+	        animation: profile 0.65s ease-out both;
+}
+
+ @-webkit-keyframes profile {
+  0% {
+    -webkit-transform: rotate(540deg) scale(5);
+            transform: rotate(540deg) scale(5);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: rotate(0) scale(1);
+            transform: rotate(0) scale(1);
+    opacity: 1;
+  }
+}
+@keyframes profile {
+  0% {
+    -webkit-transform: rotate(540deg) scale(5);
+            transform: rotate(540deg) scale(5);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: rotate(0) scale(1);
+            transform: rotate(0) scale(1);
+    opacity: 1;
+  }
+}
+
+
+
 
 .grid {
   display: grid;
