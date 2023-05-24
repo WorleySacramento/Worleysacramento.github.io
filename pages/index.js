@@ -2,8 +2,12 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
+// import {gitgif} from '@/public/images/'
+import { FaGithub,FaLinkedin } from "react-icons/fa";
 
 const inter = Inter({ subsets: ['latin'] })
+
+const gitGif = '/public/images/gitHub.gif'
 
 export default function Home() {
   return (
@@ -72,27 +76,24 @@ export default function Home() {
           </a>
 
           <a
-            href="#"
+            href="https://github.com/WorleySacramento"
             className={styles.card}
             target="_blank"
             rel="noopener noreferrer"
           >
             <h2>
-              Contatos <span>-&gt;</span>
+              Meu GitHub <span>-&gt;</span><FaGithub style={{ marginLeft:10}}/>
             </h2>
-            <p>
-              Email, telefone.
-            </p>
           </a>
 
           <a
-            href="#"
+            href="https://www.linkedin.com/in/worley-sacramento-3b07721b7/"
             className={styles.card}
-            target="_blank"
+            target="_parent"
             rel="noopener noreferrer"
           >
             <h2>
-              Blog <span>-&gt;</span>
+              Linkedin <span>-&gt;</span><FaLinkedin style={{ marginLeft:10}}/>
             </h2>
             <p>
               Acompanhe meu blog!
