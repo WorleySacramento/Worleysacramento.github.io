@@ -39,7 +39,8 @@
   font-family: var(--font-mono);
 }
 .foto{
-  border-radius: 5rem;
+  border-radius: 10%;
+  
 }
 
 .profile{
@@ -172,8 +173,9 @@
   }
 
   .foto{
-   margin-bottom: 5%;
+   margin-bottom: -50%;
     display: block;
+    width: 100%;
   }
 
   .grid {
