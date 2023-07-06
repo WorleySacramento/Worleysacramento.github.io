@@ -32,15 +32,15 @@ export default function Home() {
                 height={200}
                 priority
               /> */}
-          </div>
         <Image
                 src="/Wor-Foto.jpg"
                 alt="Vercel Logo"
                 className={styles.foto}
-                width={350}
-                height={180}
+                width={200}
+                height={200}
                 priority
               />
+          </div>
         </div>
 
         <div className={styles.center}>
