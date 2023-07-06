@@ -36,7 +36,7 @@ export default function Home() {
                 src="/Wor-Foto.jpg"
                 alt="Vercel Logo"
                 className={styles.foto}
-                width={200}
+                width={300}
                 height={200}
                 priority
               />
@@ -62,16 +62,16 @@ export default function Home() {
           </a>
 
           <a
-            href="#"
+            href="www.google.com"
             className={styles.card}
             target="_blank"
             rel="noopener noreferrer"
           >
             <h2>
-              Sobre o eu Desenvolvedor <span>-&gt;</span>
+              Eu Desenvolvedor <span>-&gt;</span>
             </h2>
             <p>
-              A minha trajetória nesse início de carreira.
+              Esse início de carreira.
             </p>
           </a>
 
