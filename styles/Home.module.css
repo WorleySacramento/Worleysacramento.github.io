@@ -33,18 +33,23 @@
   border: 1px solid rgba(var(--callout-border-rgb), 0.3);
   border-radius: var(--border-radius);
 }
+.description2{
+  max-width: 400px;
+  margin: 0rem 5rem 0rem -1rem;
+}
 
 .code {
   font-weight: 700;
   font-family: var(--font-mono);
 }
 .foto{
-  border-radius: 10%;
+  border-radius: 5%;
   
 }
 
 .profile{
 /* border-radius: 15rem; */
+border-radius: 5%;
 
 }
 .foto {
@@ -118,7 +123,7 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  padding: 4rem 0;
+  padding: 1rem 0;
 }
 
 .center::before {
@@ -126,7 +131,7 @@
   border-radius: 5%;
   width: 480px;
   height: 360px;
-  margin-left: -400px;
+  /* margin-left: -400px; */
 }
 
 .center::after {
@@ -139,7 +144,7 @@
 .center::before,
 .center::after {
   content: '';
-  left: 50%;
+  /* left: 50%; */
   position: absolute;
   filter: blur(45px);
   transform: translateZ(0);
@@ -173,10 +178,20 @@
   }
 
   .foto{
-   margin-bottom: -50%;
-    display: block;
-    width: 100%;
+   /* margin-top: 50%; */
+    /* display: none; */
+    width: 50%;
+    height: 30%;
+    position: relative;
+    background-color: blue;
   }
+  .profile{
+    /* border-radius: 15rem; */
+    border-radius: 5%;
+    margin-top: -5%;
+    position: relative;
+    width: 10%;
+    }
 
   .grid {
     grid-template-columns: 1fr;
@@ -194,12 +209,45 @@
   }
 
   .center {
-    padding: 8rem 0 6rem;
+    padding: 1rem 0 1rem;
+    margin-top: -1rem;
+    width: 100%;
+    /* margin-right: -15rem; */
   }
 
   .center::before {
     transform: none;
     height: 300px;
+    width: 100%;
+  }
+  .center::after{
+    margin-top: -10rem;
+  }
+  .foto{
+    /* margin-right: -1rem; */
+    /* margin-top: -20rem; */
+    /* height: 15rem; */
+    position: fixed;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+  }
+  .imagem{
+    margin-right: -15rem;
+    margin-top: -10rem;
+    z-index: 9999;
+    height: 20%;
+    position: fixed;
+  }
+  .description2{
+    text-align: left!important;
+    margin-top: 5rem;
+    margin-left: -5rem;
+    max-width: 250px;
+    position: relative;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: lighter;
+
   }
 
   .description {

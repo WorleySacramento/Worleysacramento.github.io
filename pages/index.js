@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
-// import {gitgif} from '@/public/images/'
+import worfoto from '@/public/images/worfoto.jpg'
 import { FaGithub,FaLinkedin } from "react-icons/fa";
 
 const inter = Inter({ subsets: ['latin'] })
@@ -25,25 +25,42 @@ export default function Home() {
           </p>
           <div className={styles.profile}>
               {/* <Image
-                src="/profile.jpg"
+                src={worfoto}
                 alt="Vercel Logo"
                 className={styles.foto}
-                width={150}
-                height={200}
+                width={250}
+                height={250}
                 priority
               /> */}
-        <Image
+        {/* <Image
                 src="/Wor-Foto.jpg"
                 alt="Vercel Logo"
-                className={styles.foto}
+                // className={styles.foto}
                 width={300}
                 height={200}
                 priority
-              />
+              /> */}
           </div>
         </div>
 
         <div className={styles.center}>
+        <div className={styles.description2}>
+        <h2> 
+         Me chamo Worley Sacramento, sou formado em
+         Análise e Desenvolvimento de Sistemas,
+         fique a vontade para conhecer meu portifólio!
+       </h2>
+        </div>
+        <div className={styles.imagem}>
+        <Image
+                src={worfoto}
+                alt="Vercel Logo"
+                className={styles.foto}
+                width={250}
+                height={250}
+                priority
+              />
+        </div>
         </div>
 
         <div className={styles.grid}>

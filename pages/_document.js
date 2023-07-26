@@ -1,9 +1,16 @@
-import { Html, Head, Main, NextScript } from 'next/document'
+import Document,  { Html, Head, Main, NextScript } from 'next/document'
 
-export default function Document() {
+class MyDocument extends Document {
+  render() {
   return (
-    <Html lang="en">
-      <Head />
+    <Html lang="pt-Br">
+      <Head>
+      <link
+            rel="preload"
+            href="/_next/image?url=%2Fpublic%2Fimages%2Fworfoto.jpg&w=640&q=75"
+            as="image"
+          />
+      </Head>
       <body>
         <Main />
         <NextScript />
@@ -11,3 +18,6 @@ export default function Document() {
     </Html>
   )
 }
+}
+
+export default MyDocument
