@@ -4,6 +4,8 @@ import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
 import worfoto from '@/public/images/worfoto.jpg'
 import { FaGithub,FaLinkedin } from "react-icons/fa";
+import {IoConstructOutline } from "react-icons/io5";
+
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -50,13 +52,15 @@ export default function Home() {
          Análise e Desenvolvimento de Sistemas,
          fique a vontade para conhecer meu portifólio!
        </h2>
+       <p>Ainda em construção <IoConstructOutline size={40}/></p>
+       
         </div>
         <div className={styles.imagem}>
         <Image
                 src={worfoto}
                 alt="Vercel Logo"
                 className={styles.foto}
-                width={250}
+                width={150}
                 height={250}
                 priority
               />
