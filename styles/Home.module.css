@@ -243,7 +243,7 @@ border-radius: 5%;
   .description2{
     text-align: left!important;
     margin-top: 1rem;
-    margin-left: 7rem;
+    margin-left: -3rem;
     max-width: 210px;
     min-width: 210px;
     position: relative;
