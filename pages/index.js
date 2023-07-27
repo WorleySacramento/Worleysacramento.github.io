@@ -77,9 +77,10 @@ export default function Home() {
             <h2>
               Trabalhos <span>-&gt;</span>
             </h2>
-            <p>
+            {/* <p>
               Trampos, hospedados no meu github.
-            </p>
+            </p> */}
+            <p>Ainda em construção <IoConstructOutline size={40}/></p>
           </a>
 
           <a
@@ -91,9 +92,10 @@ export default function Home() {
             <h2>
               Eu Desenvolvedor <span>-&gt;</span>
             </h2>
-            <p>
+            {/* <p>
               Esse início de carreira.
-            </p>
+            </p> */}
+            <p>Ainda em construção <IoConstructOutline size={40}/></p>
           </a>
 
           <a
