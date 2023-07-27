@@ -90,7 +90,7 @@ export default function Home() {
             rel="noopener noreferrer"
           >
             <h2>
-              Eu Desenvolvedor <span>-&gt;</span>
+              Sobre mim <span>-&gt;</span>
             </h2>
             {/* <p>
               Esse início de carreira.
