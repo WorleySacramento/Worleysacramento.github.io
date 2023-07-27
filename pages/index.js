@@ -52,7 +52,7 @@ export default function Home() {
          Análise e Desenvolvimento de Sistemas,
          fique a vontade para conhecer meu portifólio!
        </h2>
-       <p>Ainda em construção <IoConstructOutline size={40}/></p>
+       {/* <p>Ainda em construção <IoConstructOutline size={40}/></p> */}
        
         </div>
         <div className={styles.imagem}>

@@ -227,7 +227,7 @@ border-radius: 5%;
     /* margin-right: -1rem; */
     /* margin-top: -20rem; */
     /* height: 15rem; */
-    margin-top: -28%;
+    margin-top: -15%;
     position: fixed;
     border-radius: 50%;
     width: 50px;
@@ -242,7 +242,7 @@ border-radius: 5%;
   }
   .description2{
     text-align: left!important;
-    margin-top: 5rem;
+    margin-top: 1rem;
     margin-left: -4rem;
     max-width: 250px;
     position: relative;
