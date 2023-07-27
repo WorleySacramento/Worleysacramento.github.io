@@ -23,7 +23,7 @@ export default function Home() {
       <main className={`${styles.main} ${inter.className}`}>
         <div className={styles.description}>
           <p>
-            Bem vindo Ao meu Mundo
+           Olá, seja bem vindo(a)
           </p>
           <div className={styles.profile}>
               {/* <Image
