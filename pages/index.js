@@ -5,6 +5,7 @@ import styles from '@/styles/Home.module.css'
 import worfoto from '@/public/images/worfoto.jpg'
 import { FaGithub,FaLinkedin } from "react-icons/fa";
 import {IoConstructOutline } from "react-icons/io5";
+import {AiFillProject} from 'react-icons/ai'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -45,12 +46,13 @@ export default function Home() {
       </div>
 
       <div className={styles.center}>
+
       <div className={styles.description2}>
-      <h2> 
-       Me chamo Worley, em 06/2023 me graduei
-       Análise e Desenvolvimento de Sistemas,
-       fique a vontade para conhecer meu portifólio!
-     </h2>
+          <h1>Olá, meu nome é Worley!</h1>
+          <h3>
+            Estou animado para compartilhar
+          </h3>
+          <h3> meu portfólio com você!</h3>
      {/* <p>Ainda em construção <IoConstructOutline size={40}/></p> */}
      
       </div>
@@ -67,50 +69,58 @@ export default function Home() {
       </div>
 
       <div className={styles.grid}>
+
+        <div className={styles.card}>
         <a
           href={'./pageWork'}
-          className={styles.card}
+          className={styles.cardinterno}
           // target="_blank"
           rel="noopener noreferrer"
-        >
+          >
           <h2>
-            Projetos <span>-&gt;</span>
+            Projetos <span>-&gt;</span><AiFillProject  style={{ marginLeft:10}}/>
           </h2>
           {/* <p>
             Trampos, hospedados no meu github.
           </p> */}
-          <p>Ainda em construção <IoConstructOutline size={40}/></p>
+          <p></p>
         </a>
+        </div>
 
+          <div className={styles.card}>
         <a
-          href="www.google.com"
-          className={styles.card}
-          target="_blank"
+          href="./sobreMim"
+          // className={styles.card}
+          // target="_blank"
           rel="noopener noreferrer"
         >
           <h2>
             Sobre mim <span>-&gt;</span>
           </h2>
-          {/* <p>
-            Esse início de carreira.
-          </p> */}
-          <p>Ainda em construção <IoConstructOutline size={40}/></p>
+       
         </a>
+        </div>
 
+          <div className={styles.card}>
         <a
           href="https://github.com/WorleySacramento"
-          className={styles.card}
+          // className={styles.card}
           target="_blank"
           rel="noopener noreferrer"
         >
           <h2>
             Meu GitHub <span>-&gt;</span><FaGithub style={{ marginLeft:10}}/>
           </h2>
+          <p>
+           Meu GitHub para consultas!
+          </p>
         </a>
+        </div>
 
+        <div className={styles.card}>
         <a
           href="https://www.linkedin.com/in/worley-sacramento-3b07721b7/"
-          className={styles.card}
+          // className={styles.card}
           target="_parent"
           rel="noopener noreferrer"
         >
@@ -118,9 +128,10 @@ export default function Home() {
             Linkedin <span>-&gt;</span><FaLinkedin style={{ marginLeft:10}}/>
           </h2>
           <p>
-            Acompanhe meu blog!
+           Atualizações de projetos.
           </p>
         </a>
+        </div>
       </div>
     </main>
   </>;

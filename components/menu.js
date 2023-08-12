@@ -61,13 +61,10 @@ import styles from './menu.module.css'
 const Navbar = () => {
   return (
     <nav className={styles.navbar}>
-
     <ul className={styles.navlinks}>
- 
-
-        <li className={styles.links}><Link href="/">Home</Link></li>
+        <li className={styles.links}><Link href="/">Principal</Link></li>
         <li className={styles.links}><Link href="/pageWork">Projetos</Link></li>
-        <li className={styles.links}><Link href="/">Contact</Link></li>
+        <li className={styles.links}><Link href="/">Contatos</Link></li>
     </ul>
   </nav>
 

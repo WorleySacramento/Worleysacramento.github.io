@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import styles from './pokedex.module.css'
-
+import {IoSearchSharp} from "react-icons/io5";
 
 
 function PokedexComponent() {
@@ -55,8 +55,9 @@ function PokedexComponent() {
           </div>
           <div className={styles.form}>
             <form onSubmit={handleSubmit} class="search">
-              <input onChange={handleChange} type="text" placeholder="nome ou número pokemon " />
-              <button class="search-button">Search</button>
+              <input className={styles.input} onChange={handleChange} type="text" placeholder="nome ou número pokemon " />
+              <button className={styles.button}><IoSearchSharp className={styles.icon}/></button>
+              
             </form>
           </div>
           {pokemonData.map((data) => {
