@@ -41,7 +41,7 @@ function PokedexComponent() {
   }
 
 
-  console.log(pokemonData);
+
 
 
   return (
@@ -60,13 +60,13 @@ function PokedexComponent() {
               
             </form>
           </div>
-          {pokemonData.map((data) => {
+          {pokemonData.map((item, index) => {
             return (
-              <div className={styles.container} key={data.id}>
+              <div className={styles.container} key={index}>
                 <div className={styles.imagemcard}>
                   <p>{ }</p>
                   <div className={styles.imagembody}>
-                    <img className={styles.imagem} src={data.sprites['front_default']} alt={data.name}/>
+                    <img className={styles.imagem} src={item.sprites.front_default} alt={item.name}/>
                   </div>
                 </div>
                 <div className={styles.tabcontainer}>
@@ -85,11 +85,11 @@ function PokedexComponent() {
                 </thead>
                   <tbody>
                     <tr className={styles.tr}>
-                      <td className={styles.td}>{data.name}</td>
+                      <td className={styles.td}>{item.name}</td>
                       <td className={styles.td}>{typePokemon}</td>
-                      <td className={styles.td}>{''}{Math.round(data.height * 3.9)}</td>
-                      <td className={styles.td}>{ }{Math.round(data.weight / 4.3)} Kg</td>
-                      <td className={styles.td}>{data.base_experience} Pts</td>
+                      <td className={styles.td}>{''}{Math.round(item.height * 3.9)}</td>
+                      <td className={styles.td}>{ }{Math.round(item.weight / 4.3)} Kg</td>
+                      <td className={styles.td}>{item.base_experience} Pts</td>
                       {/* <td className={styles.td}>{data?.abilities?.ability}</td> */}
                     </tr>
                   </tbody>
