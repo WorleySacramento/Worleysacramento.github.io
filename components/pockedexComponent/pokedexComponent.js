@@ -41,7 +41,7 @@ function PokedexComponent() {
   }
 
 
-  // console.log(pokemonData);
+  console.log(pokemonData);
 
 
   return (
@@ -66,7 +66,7 @@ function PokedexComponent() {
                 <div className={styles.imagemcard}>
                   <p>{ }</p>
                   <div className={styles.imagembody}>
-                    <img className={styles.imagem} src={data.sprites['front_default']} />
+                    <img className={styles.imagem} src={data.sprites['front_default']} alt={data.name}/>
                   </div>
                 </div>
                 <div className={styles.tabcontainer}>

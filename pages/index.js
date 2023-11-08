@@ -2,15 +2,16 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
-import worfoto from '@/public/images/worfoto.jpg'
+// import worfoto from '@/images/worfoto.jpg'
 import { FaGithub,FaLinkedin } from "react-icons/fa";
 import {IoConstructOutline } from "react-icons/io5";
 import {AiFillProject} from 'react-icons/ai'
 
 
+
 const inter = Inter({ subsets: ['latin'] })
 
-const gitGif = '/public/images/gitHub.gif'
+const worfoto = '/images/worfoto.jpg'
 
 export default function Home() {
   return <>
@@ -59,7 +60,7 @@ export default function Home() {
       <div className={styles.imagem}>
       <Image
               src={worfoto}
-              alt="Vercel Logo"
+              alt="foto"
               className={styles.foto}
               width={150}
               height={250}

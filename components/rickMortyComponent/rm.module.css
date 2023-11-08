@@ -1,0 +1,56 @@
+.container{
+    display: grid;
+    /* grid-template-columns: repeat(2,1fr); */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    /* background-color: #2196F3; */
+    padding: 30px;
+}
+.content {
+    padding-top: 1px;
+    border: 1px solid rgb(255, 255, 255);
+    text-align: center;
+    /* font-size: 30px; */
+    border-radius: 15px;
+    background-color: whitesmoke;
+  }
+  .main{
+    /* background-color: whitesmoke; */
+    color: black;
+  }
+  .image{
+    max-width: 100%;
+    min-width: 100px;
+    border-top-right-radius: 15px;
+    border-top-left-radius:15px ;
+  }
+
+  .redText{
+    color: red;
+    background-color: rgb(255, 255, 255);
+  }
+  .greenText{
+    color: green;
+    background-color: rgb(255, 255, 255);
+  }
+
+  .form{
+    text-align: center;
+    padding: 10px;
+
+  }
+  .input{
+    font-size: 15px;
+    height: 2rem;
+    padding:.75em ;
+  }
+
+  .button{
+    height: 2rem;
+    width: 2rem;
+    color:rgb(255, 255, 255);
+    background-color:rgb(72, 72, 201);
+    border:2px solid rgb(255, 255, 255);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
