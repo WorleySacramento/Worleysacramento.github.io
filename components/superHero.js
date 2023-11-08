@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import Image from 'next/image';
 
 
 const token = REACT_API_tOKEN
@@ -20,9 +21,9 @@ const tableColumns = [
       dataIndex: 'alignment',
       render: (alignment) => {
         return (
-          <Tag color={alignment === 'good' ? 'green' : 'volcano'}>
+          <div color={alignment === 'good' ? 'green' : 'volcano'}>
             {alignment === 'good' ? 'HERO' : 'VILLIAN'}
-          </Tag>
+          </div>
         )
       },
     },
