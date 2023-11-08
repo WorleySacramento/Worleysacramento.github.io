@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect,useCallback } from 'react'
 import axios from 'axios';
 import styles from './pokedex.module.css'
 import {IoSearchSharp} from "react-icons/io5";
@@ -13,19 +13,32 @@ function PokedexComponent() {
   const [previousUrl, setPreviousUrl] = useState('');
   const [loading, setLoading] = useState(true);
 
-  const getPokemon = async () => {
+  // const getPokemon = async () => {
+  //   const toArray = [];
+  //   try {
+  //     const url = `https://pokeapi.co/api/v2/pokemon/${pokemon}`
+  //     const response = await axios.get(url)
+  //     toArray.push(response.data);
+  //     setTypePokemon(response.data.types[0].type.name);
+  //     setPokemonData(toArray);
+  //     console.log(response, 'está aqui>>')
+  //   } catch (error) {
+  //     console.log(error, 'tem algo errado >>>')
+  //   }
+  // }
+  const getPokemon = useCallback(async () => {
     const toArray = [];
     try {
-      const url = `https://pokeapi.co/api/v2/pokemon/${pokemon}`
-      const response = await axios.get(url)
+      const url = `https://pokeapi.co/api/v2/pokemon/${pokemon}`;
+      const response = await axios.get(url);
       toArray.push(response.data);
       setTypePokemon(response.data.types[0].type.name);
       setPokemonData(toArray);
-      console.log(response, 'está aqui>>')
+      console.log(response, 'está aqui>>');
     } catch (error) {
-      console.log(error, 'tem algo errado >>>')
+      console.log(error, 'tem algo errado >>>');
     }
-  }
+  }, [pokemon]);
 
   useEffect(() => {
     getPokemon();

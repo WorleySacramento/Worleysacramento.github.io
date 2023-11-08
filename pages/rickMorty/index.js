@@ -6,7 +6,7 @@ function RickMortyPage() {
   return <div>
     <Header/>
    <RickMortComponent/>
-    </div>;
+    </div>
 }
 
 export default RickMortyPage

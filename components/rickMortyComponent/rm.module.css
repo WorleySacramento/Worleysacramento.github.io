@@ -27,11 +27,13 @@
 
   .redText{
     color: red;
-    background-color: rgb(255, 255, 255);
+    background-color:whitesmoke;
+    font-weight: 800;
   }
   .greenText{
-    color: green;
-    background-color: rgb(255, 255, 255);
+    color: rgb(6, 201, 6);
+    background-color: whitesmoke;
+    font-weight: 800;
   }
 
   .form{
@@ -50,7 +52,18 @@
     width: 2rem;
     color:rgb(255, 255, 255);
     background-color:rgb(72, 72, 201);
-    border:2px solid rgb(255, 255, 255);
+    border:1px solid rgb(255, 255, 255);
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
+}
+
+.title{
+  display: flex;
+  justify-content: center;
+}
+.imgTitle{
+  max-width: 100%;
+  min-width: 100px;
+  border-top-right-radius: 15px;
+  border-top-left-radius:15px ;
 }

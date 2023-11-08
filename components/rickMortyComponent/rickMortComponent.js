@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
@@ -41,7 +42,10 @@ const handleSubmit = (event) =>{
 
   
   return (
-    <div>rickMortComponent
+    <div>
+      <div className={styles.title}>
+        <img className={styles.imgTitle} src='/images/Rick_and_Morty.svg'/>
+      </div>
       <div className={styles.form}>
             <form  class="search">
               <input className={styles.input} value={query} onChange={event => setQuery(event.target.value)} type="text" placeholder="Personagem " />
@@ -54,7 +58,7 @@ const handleSubmit = (event) =>{
 {characters.map(item => ( 
           <div className={styles.content} key={item.id} >
         <div >
-            <Image className={styles.image} src={item.image}/>
+            <img className={styles.image} src={item.image}/>
         </div>
             <div className={styles.main}>
                 <div className={styles.column}>Nome: <span className={styles.name}>{item.name}</span> </div>
