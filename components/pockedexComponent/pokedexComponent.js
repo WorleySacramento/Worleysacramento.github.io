@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
@@ -14,7 +13,7 @@ function PokedexComponent() {
   const [previousUrl, setPreviousUrl] = useState('');
   const [loading, setLoading] = useState(true);
 
-  const getPokemon = useCallback(async () => {
+  const getPokemon = async () => {
     const toArray = [];
     try {
       const url = `https://pokeapi.co/api/v2/pokemon/${pokemon}`
@@ -26,7 +25,7 @@ function PokedexComponent() {
     } catch (error) {
       console.log(error, 'tem algo errado >>>')
     }
-  })
+  }
 
   useEffect(() => {
     getPokemon();
@@ -38,14 +37,10 @@ function PokedexComponent() {
     getPokemon()
   }
 
-
   const handleChange = (e) => {
     setPokemon(e.target.value.toLowerCase())
   }
-  const handleTypeChange = (e) => {
-    setTypePokemon(e.target.value.toLowerCase())
-  }
-  
+
 
 
 
