@@ -62,8 +62,7 @@
   justify-content: center;
 }
 .imgTitle{
-  max-width: 100%;
-  min-width: 100px;
-  border-top-right-radius: 15px;
-  border-top-left-radius:15px ;
+  max-width: 40%;
+  min-width: 250px;
+  font-size: 45px;
 }
