@@ -53,7 +53,6 @@ const handleSubmit = (event) =>{
               
             </form>
           </div>
-
           <div className={styles.container}>
 {characters.map(item => ( 
           <div className={styles.content} key={item.id} >
