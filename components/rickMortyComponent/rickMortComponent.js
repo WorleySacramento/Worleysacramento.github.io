@@ -1,10 +1,10 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import styles from './rm.module.css'
+import Image from 'next/image';
 
-import RMQuery from '@/pages/api/services'
 import {IoSearchSharp} from "react-icons/io5";
-import { RMApi } from '@/pages/api/api';
 
 
 
@@ -54,7 +54,7 @@ const handleSubmit = (event) =>{
 {characters.map(item => ( 
           <div className={styles.content} key={item.id} >
         <div >
-            <img className={styles.image} src={item.image}/>
+            <Image className={styles.image} src={item.image}/>
         </div>
             <div className={styles.main}>
                 <div className={styles.column}>Nome: <span className={styles.name}>{item.name}</span> </div>
@@ -86,20 +86,3 @@ const handleSubmit = (event) =>{
     </div>
   )
 }
-
-// const getCharacters = async () => {
-//   const url = "https://rickandmortyapi.com/api/character";
-//   const response = await axios.get(url);
-
-//   return response.data;
-// };
-
-// useEffect(() => {
-//   const fetchData = async () => {
-//     const characters = await getCharacters();
-//     setData(characters);
-//     console.log(characters, 'aaaaaaaaaaaaaa');
-//   };
-
-//   fetchData();
-// }, []);
