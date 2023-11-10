@@ -20,9 +20,10 @@ function Work() {
                     </div>
                   <div  className={styles.paragrafo}>
                   <p>
-                  O aplicativo é totalmente responsivo, o que 
-                  significa que ele pode ser visualizado em qualquer 
-                  dispositivo, incluindo computadores, laptops, tablets e smartphones.
+                  A Pokédex é uma enciclopédia digital abrangente que cataloga e fornece informações
+                   detalhadas sobre todas as espécies de Pokémon conhecidas. Com a popularidade global 
+                   da franquia Pokémon, a API Pokédex emerge como uma fonte rica e confiável de dados que
+                    pode ser aproveitada para criar experiências interativas e educativas.
                   </p>
                   </div>
                   </Link>
