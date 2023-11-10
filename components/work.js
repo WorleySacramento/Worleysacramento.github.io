@@ -17,7 +17,6 @@ function Work() {
                   <Link className={styles.link} href='/pokedex'>
                      <div className={styles.description}>
                      <h3>Pokedex</h3>
-                    <p>Consumo da Api Pokedex, e retornando os dados!</p>
                     </div>
                   <div  className={styles.paragrafo}>
                   <p>
