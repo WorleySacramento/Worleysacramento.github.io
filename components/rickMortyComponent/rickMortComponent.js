@@ -49,7 +49,7 @@ const handleSubmit = (event) =>{
       <div className={styles.form}>
             <form  class="search">
               <input className={styles.input} value={query} onChange={event => setQuery(event.target.value)} type="text" placeholder="Personagem " />
-              <button className={styles.button}><IoSearchSharp className={styles.icon}/></button>
+              {/* <button className={styles.button}><IoSearchSharp className={styles.icon}/></button> */}
               
             </form>
           </div>

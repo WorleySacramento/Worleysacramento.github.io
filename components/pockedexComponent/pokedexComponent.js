@@ -70,7 +70,7 @@ function PokedexComponent() {
           <div className={styles.form}>
             <form onSubmit={handleSubmit} class="search">
               <input className={styles.input} onChange={handleChange} type="text" placeholder="nome ou número pokemon " />
-              <button className={styles.button}><IoSearchSharp className={styles.icon}/></button>
+              {/* <button className={styles.button}><IoSearchSharp className={styles.icon}/></button> */}
               
             </form>
           </div>
