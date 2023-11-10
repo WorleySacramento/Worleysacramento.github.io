@@ -9,7 +9,7 @@ function Work() {
     <div className={styles.wrapper}>
           <div className={styles.container}>
         <div className={styles.title}>
-        <h1>Paginas</h1>
+        <h1>Páginas</h1>
         </div>
         <div className={styles.containersection}>
 
