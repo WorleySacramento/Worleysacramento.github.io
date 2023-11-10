@@ -77,6 +77,39 @@ function Work() {
                   </div>
                 </Link>
               </div>
+              <div className={styles.section}>
+              <Link className={styles.link} href='/'>
+                     <div className={styles.description}>
+                     <h3>Novo Projeto</h3>
+                     {/* <p>Ainda em construção <IoConstructOutline size={40}/></p> */}
+                    </div>
+                  <div  className={styles.paragrafo}>
+                  <p>Ainda em construção <IoConstructOutline size={40}/></p>
+                  </div>
+                </Link>
+              </div>
+              <div className={styles.section}>
+              <Link className={styles.link} href='/'>
+                     <div className={styles.description}>
+                     <h3>Novo Projeto</h3>
+                     {/* <p>Ainda em construção <IoConstructOutline size={40}/></p> */}
+                    </div>
+                  <div  className={styles.paragrafo}>
+                  <p>Ainda em construção <IoConstructOutline size={40}/></p>
+                  </div>
+                </Link>
+              </div>
+              <div className={styles.section}>
+              <Link className={styles.link} href='/'>
+                     <div className={styles.description}>
+                     <h3>Novo Projeto</h3>
+                     {/* <p>Ainda em construção <IoConstructOutline size={40}/></p> */}
+                    </div>
+                  <div  className={styles.paragrafo}>
+                  <p>Ainda em construção <IoConstructOutline size={40}/></p>
+                  </div>
+                </Link>
+              </div>
               </div>
         </div>
     </div>
