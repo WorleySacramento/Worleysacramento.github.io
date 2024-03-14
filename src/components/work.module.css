@@ -1,0 +1,175 @@
+.wrapper{
+ width: 100%;
+ display: flex;
+ /* flex-direction: column; */
+ justify-content: center;
+}
+
+.container{
+display: flex;
+justify-content: center;
+flex-direction: column;
+margin-top: 1rem;
+width: 100%;
+padding: 2rem;
+
+}
+.containersection{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: 500px;
+    align-items: center;
+    
+    display: grid;
+    /* grid-template-columns: repeat(2,1fr); */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 10px 5px;
+    background-color: #17171700;
+    padding: 10px 5px 10px 15px;
+    overflow-y: auto;
+    border: 1px solid #41414175;
+}
+
+.link{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    padding: 20px 5px;
+}
+.title{
+    margin-bottom: 2rem;
+    justify-content: center;
+    display: flex;
+}
+.description{
+    margin-top:.1rem;
+}
+.paragrafo{
+    margin-top: .1rem;
+    padding: 1rem;
+}
+
+@media (max-width: 700px) {
+    .section {
+        background-color: transparent;
+        width: 250px;
+        height: 280px;
+        perspective: 1000px;
+        margin-bottom: 25px;
+    }
+
+
+    .description {
+        margin-top: .5rem;
+    }
+
+    .paragrafo {
+        margin-top: 2rem;
+        padding: 1rem;
+    }
+
+    .containersection {
+        display: flex;
+        justify-content: center;
+        height: min-content;
+   
+    }
+    .sectionInner{
+        /* position: relative; */
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: transform 0.6s;
+        transform-style: preserve-3d;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        font-size: 12px;
+    }
+    .section:hover .sectionInner {
+        transform: rotateY(180deg);
+      }
+    
+    .descriptionFront{
+        background-color: #03030311;
+        color: black;
+        border-radius: 8px;
+        height: 250px;
+    }
+    
+    .paragrafoBack{
+        background-color: #000;
+        color: white;
+        transform: rotateY(180deg);
+        display: flex;
+        padding-top: 10px;
+        border-radius: 8px;
+    }
+    
+    .descriptionFront, .paragrafoBack{
+        position: absolute;
+      width: 100%;
+      height: 50%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      padding: 3px;
+    }
+
+}
+
+
+/* flip card */
+
+.section{
+    background-color: transparent;
+    width: 250px;
+    height: 280px;
+    perspective: 1000px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.section h3{
+
+    margin-top: 10px;
+}
+
+
+.sectionInner{
+
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.section:hover .sectionInner {
+    transform: rotateY(180deg);
+  }
+
+.descriptionFront{
+    background-color: #03030311;
+    color: black;
+    border-radius: 8px;
+    height: 250px;
+}
+
+.paragrafoBack{
+    background-color: #000;
+    color: white;
+    transform: rotateY(180deg);
+    display: flex;
+    padding-top: 10px;
+    border-radius: 8px;
+}
+
+.descriptionFront, .paragrafoBack{
+    position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  padding: 3px;
+}

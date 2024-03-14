@@ -1,6 +1,6 @@
 import React from 'react'
-import Work from '@/components/work'
-import Header from '@/components/header'
+import Work from '../../components/work'
+import Header from '../../components/header'
 
 
 
