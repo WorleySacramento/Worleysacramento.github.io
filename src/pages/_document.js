@@ -5,11 +5,11 @@ class MyDocument extends Document {
   return (
     <Html lang="pt-Br">
       <Head>
-      <link
+      {/* <link
             rel="preload"
             href="/_next/image?url=%2Fpublic%2Fimages%2Fworfoto.jpg&w=640&q=75"
             as="image"
-          />
+          /> */}
       </Head>
       <body>
         <Main />
