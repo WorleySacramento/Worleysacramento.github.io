@@ -7,16 +7,6 @@ const pad = (number, length) => {
   }
   return str;
 };
-// export const getPokemonImageUrl = (id) =>
-//   `https://pokeres.bastionbot.org/images/pokemon/${id}.png`;
-
-// export const getPokemonImageUrl = (id) =>
-//   `https://raw.githubusercontent.com/HybridShivam/Pokemon/master/assets/images/${pad(
-//     id,
-//     3
-//   )}.png`;
-
-// export const getPokemonImageUrl = (id) => `./images/${pad(id, 3)}.png`;
 export const getPokemonImageUrl = (id) =>
   `/thumbnails-compressed/${pad(id, 3)}.png`;
 

@@ -1,6 +1,6 @@
 import React from 'react';
-import About from '@/components/about';
-import Header from '@/components/header';
+import About from '../../components/about';
+import Header from '../../components/header';
 
 function SobreMim() {
   return (

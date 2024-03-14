@@ -15,7 +15,8 @@
   max-width: var(--max-width);
   width: 100%;
   z-index: 2;
-  font-family: var(--font-mono);
+  /* font-family: var(--font-mono); */
+ 
 }
 
 .description a {
@@ -29,9 +30,10 @@
   position: relative;
   margin: 0;
   padding: 1rem;
-  background-color: rgba(var(--callout-rgb), 0.5);
   border: 1px solid rgba(var(--callout-border-rgb), 0.3);
   border-radius: var(--border-radius);
+  background-color: #000;
+  text-transform: capitalize;
 }
 .description2{
   max-width: 400px;
@@ -43,7 +45,7 @@
   font-family: var(--font-mono);
 }
 .foto{
-  border-radius: 5%;
+  border-radius: 3%;
   
 }
 
@@ -96,13 +98,11 @@ border-radius: 5%;
 
 .card {
   padding: 1rem 1.2rem;
-  /* margin: 0rem 2rem  0rem 0rem; */
   border-radius: var(--border-radius);
-  background: rgba(var(--card-rgb), 0);
-  border: 1px solid rgba(var(--card-border-rgb), 0);
+  background: #000;
   border: .1rem solid white;
-  transition: background 3s, border 200ms;
-  /* width: 100%; */
+  transition: background 30000ms, border 200ms;
+  cursor: pointer;
 }
 
 .cardinterno{
@@ -142,7 +142,6 @@ border-radius: 5%;
   border-radius: 5%;
   width: 480px;
   height: 360px;
-  /* margin-left: -400px; */
 }
 
 .center::after {
@@ -162,9 +161,7 @@ border-radius: 5%;
 }
 
 
-.foto {
-  /* position: relative; */
-}
+
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {
   .card:hover {
