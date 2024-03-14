@@ -1,4 +1,4 @@
-import '@/globals.css'
+import '@/styles/global.css'
 
 
 export default function App({ Component, pageProps }) {
