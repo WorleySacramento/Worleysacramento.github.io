@@ -97,7 +97,10 @@ function Work() {
                   <p>
                     Uma aplicação de lista de tarefas é uma ferramenta simples,
                     mas poderosa, projetada para ajudar os usuários a gerenciar suas tarefas diárias,
-                    organizando e priorizando suas atividades. </p>
+                    organizando e priorizando suas atividades. 
+                    </p>
+                    <span>construção em andamento</span>
+                    <progress value='60' max='100'></progress>100%
                 </Link>
               </div>
             </div>
