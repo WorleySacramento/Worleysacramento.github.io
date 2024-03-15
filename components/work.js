@@ -97,7 +97,11 @@ function Work() {
                   <p>
                     Uma aplicação de lista de tarefas é uma ferramenta simples,
                     mas poderosa, projetada para ajudar os usuários a gerenciar suas tarefas diárias,
-                    organizando e priorizando suas atividades. </p>
+                    organizando e priorizando suas atividades. 
+                    </p>
+                    <br/>
+                    <span>Em andamento <IoConstructOutline size={15} /></span>
+                    <progress value='65' max='100'></progress>100%
                 </Link>
               </div>
             </div>
@@ -121,6 +125,9 @@ function Work() {
               <div className={styles.paragrafoBack}>
                 <Link className={styles.link} href=''>
                 <p>Ainda em construção <IoConstructOutline size={40} /></p>
+                <br/>
+                    <span>Em andamento <IoConstructOutline size={15} /></span>
+                    <progress value='5' max='100'></progress>100%
                 </Link>
               </div>
             </div>
