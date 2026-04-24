@@ -101,11 +101,17 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: github-pages
+      
       - name: Debug - Check workspace
         run: |
           echo "Current directory: $(pwd)"
           echo "Workspace contents:"
           ls -la
+      
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v3
+        uses: actions/deploy-pages@v4
