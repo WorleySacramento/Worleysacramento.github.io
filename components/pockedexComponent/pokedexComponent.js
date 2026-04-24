@@ -49,7 +49,7 @@ function PokedexComponent() {
   const fetchPokemonList = async () => {
     setLoadingList(true);
     try {
-      const { data } = await axios.get('/api/pokemon-list?limit=20&offset=0');
+      const { data } = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=20&offset=0');
       setPokemonList(data.results || []);
     } catch (err) {
       console.error('Erro ao buscar lista de pokémons:', err);
