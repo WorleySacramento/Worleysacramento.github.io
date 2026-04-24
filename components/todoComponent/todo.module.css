@@ -59,6 +59,17 @@
 	font-weight: 600;
 }
 
+.eachtodo div {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.toggle {
+	width: 16px;
+	height: 16px;
+}
+
 .maincont button:hover {
 	cursor: pointer;
 }

@@ -1,9 +1,11 @@
-const { Ref } = require("faunadb");
-const faunadb = require("faunadb");
-const secret = require("../index")
-const q = faunadb.query;
-const client = new faunadb.Client({ secret });
+const { getFaunaClient, q } = require("../faunaClient");
 module.exports = async (req, res) => {
+  const { client, error } = getFaunaClient();
+
+  if (error) {
+    return res.status(500).json({ error });
+  }
+
   const inputData = req.body.data;
   try {
     const dbs = await client.query(

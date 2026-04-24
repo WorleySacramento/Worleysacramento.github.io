@@ -8,11 +8,50 @@ import TodoImage from '@/public/images/listaTarefa.jpeg'
 import BuildImage from '@/public/images/build.jpeg'
 import AguardeImage from '@/public/images/aguarde.jpeg'
 
-
-
-const Poke = '../../public/images/pokemon.jpeg'
-
 function Work() {
+  const featuredProjects = [
+    {
+      title: 'Pokedex',
+      image: PokedexImage,
+      imageAlt: 'Preview do projeto Pokedex',
+      demoHref: '/pokedex',
+      codeHref: 'https://github.com/WorleySacramento?tab=repositories',
+      description: [
+        'Problema: consultar dados de Pokemon de forma rapida e visual.',
+        'Stack: Next.js, React, CSS Modules e consumo da PokeAPI.',
+        'Decisao tecnica: busca direta por nome/numero com renderizacao condicional para simplificar o fluxo.',
+        'Resultado: consulta em poucos segundos e experiencia clara para explorar informacoes.',
+      ],
+    },
+    {
+      title: 'Rick and Morty',
+      image: RickMortyImage,
+      imageAlt: 'Preview do projeto Rick and Morty',
+      demoHref: '/rickMorty',
+      codeHref: 'https://github.com/WorleySacramento?tab=repositories',
+      description: [
+        'Problema: encontrar personagens e visualizar dados sem navegar em varias telas.',
+        'Stack: Next.js, React, Axios e API Rick and Morty.',
+        'Decisao tecnica: pesquisa por nome no mesmo fluxo da listagem para reduzir friccao.',
+        'Resultado: descoberta de personagens com feedback visual imediato.',
+      ],
+    },
+    {
+      title: 'Lista De Tarefa',
+      image: TodoImage,
+      imageAlt: 'Preview do projeto Lista de Tarefas',
+      demoHref: '/todo',
+      codeHref: 'https://github.com/WorleySacramento?tab=repositories',
+      description: [
+        'Problema: organizar tarefas do dia a dia com operacoes simples.',
+        'Stack: Next.js, React, API Routes e FaunaDB.',
+        'Decisao tecnica: separar leitura e escrita por endpoints para facilitar manutencao.',
+        'Resultado: fluxo CRUD funcional para criar, atualizar e remover tarefas.',
+      ],
+      progress: 65,
+    },
+  ];
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
@@ -21,91 +60,52 @@ function Work() {
         </div>
         <div className={styles.containersection}>
 
-          <div className={styles.section}>
-            <h3>Pokedex</h3>
-            <div className={styles.sectionInner}>
-              <div className={styles.descriptionFront} >
-                <Image
-                  src={PokedexImage}
-                  alt="foto"
-                  style={{
-                    objectFit: 'fill',
-                    width: '100%',
-                    borderRadius: 15,
-                    height: '100%'
-                  }}
-                />
-              </div>
-              <div className={styles.paragrafoBack} >
-                <Link className={styles.link} href='/pokedex'>
-                  <p>
-                    A Pokédex é uma enciclopédia digital abrangente que cataloga e fornece informações
-                    detalhadas sobre todas as espécies de Pokémon conhecidas. Com a popularidade global
-                    da franquia Pokémon, a API Pokédex emerge como uma fonte rica e confiável de dados que
-                    pode ser aproveitada para criar experiências interativas e educativas.
-                  </p>
-                </Link>
-              </div>
-            </div>
-          </div>
-
-          <div className={styles.section}>
-            <h3>Rick Morty</h3>
-            <div className={styles.sectionInner}>
-              <div className={styles.descriptionFront} >
-                <Image
-                  src={RickMortyImage}
-                  alt="foto"
-                  style={{
-                    objectFit: 'fill',
-                    width: '100%',
-                    borderRadius: 15,
-                    height: '100%'
-                  }}
-                />
-              </div>
-              <div className={styles.paragrafoBack}>
-                <Link className={styles.link} href='/rickMorty'>
-                  <p>Ao acessar a página, você será recebido com uma interface simples e amigável.
-                    Um campo de pesquisa intuitivo convida você a digitar o nome do personagem que
-                    deseja conhecer melhor. Após inserir o nome e pressionar Pesquisar,
-                    nossa página utiliza a API oficial de Rick and Morty para buscar
-                    informações detalhadas sobre o personagem em questão.</p>
-                </Link>
+          {featuredProjects.map((project) => (
+            <div className={styles.section} key={project.title}>
+              <h3>{project.title}</h3>
+              <div className={styles.sectionInner}>
+                <div className={styles.descriptionFront}>
+                  <Image
+                    src={project.image}
+                    alt={project.imageAlt}
+                    style={{
+                      objectFit: 'fill',
+                      width: '100%',
+                      borderRadius: 15,
+                      height: '100%'
+                    }}
+                  />
+                </div>
+                <div className={styles.paragrafoBack}>
+                  <div className={styles.projectContent}>
+                    {project.description.map((item) => (
+                      <p key={item}>{item}</p>
+                    ))}
+                    {project.progress ? (
+                      <div className={styles.progressWrap}>
+                        <span>Em andamento <IoConstructOutline size={15} /></span>
+                        <progress value={project.progress} max='100'></progress>
+                        {project.progress}%
+                      </div>
+                    ) : null}
+                    <div className={styles.ctaRow}>
+                      <Link className={styles.ctaButton} href={project.demoHref}>
+                        Demo
+                      </Link>
+                      <a
+                        className={styles.ctaButton}
+                        href={project.codeHref}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Codigo
+                      </a>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-
-
-          <div className={styles.section}>
-            <h3>Lista De Tarefa</h3>
-            <div className={styles.sectionInner}>
-              <div className={styles.descriptionFront} >
-                <Image
-                  src={TodoImage}
-                  alt="foto"
-                  style={{
-                    objectFit: 'fill',
-                    width: '100%',
-                    borderRadius: 15,
-                    height: '100%'
-                  }}
-                />
-              </div>
-              <div className={styles.paragrafoBack}>
-                <Link className={styles.link} href='/todo'>
-                  <p>
-                    Uma aplicação de lista de tarefas é uma ferramenta simples,
-                    mas poderosa, projetada para ajudar os usuários a gerenciar suas tarefas diárias,
-                    organizando e priorizando suas atividades. 
-                    </p>
-                    <br/>
-                    <span>Em andamento <IoConstructOutline size={15} /></span>
-                    <progress value='65' max='100'></progress>100%
-                </Link>
-              </div>
-            </div>
-          </div>
+          ))}
           
           <div className={styles.section}>
           <h3>Novo Projeto</h3>
@@ -113,7 +113,7 @@ function Work() {
               <div className={styles.descriptionFront} >
                 <Image
                   src={BuildImage}
-                  alt="foto"
+                  alt="Preview de novo projeto em construcao"
                   style={{
                     objectFit: 'fill',
                     width: '100%',
@@ -123,7 +123,7 @@ function Work() {
                 />
               </div>
               <div className={styles.paragrafoBack}>
-                <Link className={styles.link} href=''>
+                <Link className={styles.link} href='/pageWork'>
                 <p>Ainda em construção <IoConstructOutline size={40} /></p>
                 <br/>
                     <span>Em andamento <IoConstructOutline size={15} /></span>
@@ -139,7 +139,7 @@ function Work() {
               <div className={styles.descriptionFront} >
                 <Image
                   src={AguardeImage}
-                  alt="foto"
+                  alt="Imagem ilustrativa de novidades em breve"
                   style={{
                     objectFit: 'fill',
                     width: '100%',
@@ -149,7 +149,7 @@ function Work() {
                 />
               </div>
               <div className={styles.paragrafoBack}>
-                <Link className={styles.link} href=''>
+                <Link className={styles.link} href='/pageWork'>
                 <p>Aguarde Novidades <IoConstructOutline size={40} /></p>
                 </Link>
               </div>
@@ -161,7 +161,7 @@ function Work() {
               <div className={styles.descriptionFront} >
                 <Image
                   src={AguardeImage}
-                  alt="foto"
+                  alt="Imagem ilustrativa de novidades em breve"
                   style={{
                     objectFit: 'fill',
                     width: '100%',
@@ -171,7 +171,7 @@ function Work() {
                 />
               </div>
               <div className={styles.paragrafoBack}>
-                <Link className={styles.link} href=''>
+                <Link className={styles.link} href='/pageWork'>
                 <p>Aguarde Novidades <IoConstructOutline size={40} /></p>
                 </Link>
               </div>
@@ -183,7 +183,7 @@ function Work() {
               <div className={styles.descriptionFront} >
                 <Image
                   src={AguardeImage}
-                  alt="foto"
+                  alt="Imagem ilustrativa de novidades em breve"
                   style={{
                     objectFit: 'fill',
                     width: '100%',
@@ -193,7 +193,7 @@ function Work() {
                 />
               </div>
               <div className={styles.paragrafoBack}>
-                <Link className={styles.link} href=''>
+                <Link className={styles.link} href='/pageWork'>
                 <p>Aguarde Novidades <IoConstructOutline size={40} /></p>
                 </Link>
               </div>
@@ -205,7 +205,7 @@ function Work() {
               <div className={styles.descriptionFront} >
                 <Image
                   src={AguardeImage}
-                  alt="foto"
+                  alt="Imagem ilustrativa de novidades em breve"
                   style={{
                     objectFit: 'fill',
                     width: '100%',
@@ -215,7 +215,7 @@ function Work() {
                 />
               </div>
               <div className={styles.paragrafoBack}>
-                <Link className={styles.link} href=''>
+                <Link className={styles.link} href='/pageWork'>
                 <p>Aguarde Novidades <IoConstructOutline size={40} /></p>
                 </Link>
               </div>
