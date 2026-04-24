@@ -1,42 +1,31 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useState, useEffect,useCallback } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import axios from 'axios';
 import styles from './pokedex.module.css'
-import {IoSearchSharp} from "react-icons/io5";
-
 
 function PokedexComponent() {
   const [pokemonData, setPokemonData] = useState([]);
   const [pokemon, setPokemon] = useState('pikachu');
+  const [searchInput, setSearchInput] = useState('pikachu');
   const [typePokemon, setTypePokemon] = useState('')
-  const [nextUrl, setNextUrl] = useState('');
-  const [previousUrl, setPreviousUrl] = useState('');
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
-  // const getPokemon = async () => {
-  //   const toArray = [];
-  //   try {
-  //     const url = `https://pokeapi.co/api/v2/pokemon/${pokemon}`
-  //     const response = await axios.get(url)
-  //     toArray.push(response.data);
-  //     setTypePokemon(response.data.types[0].type.name);
-  //     setPokemonData(toArray);
-  //     console.log(response, 'está aqui>>')
-  //   } catch (error) {
-  //     console.log(error, 'tem algo errado >>>')
-  //   }
-  // }
   const getPokemon = useCallback(async () => {
-    const toArray = [];
+    setLoading(true);
+    setError('');
     try {
       const url = `https://pokeapi.co/api/v2/pokemon/${pokemon}`;
       const response = await axios.get(url);
-      toArray.push(response.data);
+      const toArray = [response.data];
       setTypePokemon(response.data.types[0].type.name);
       setPokemonData(toArray);
-      console.log(response, 'está aqui>>');
-    } catch (error) {
-      console.log(error, 'tem algo errado >>>');
+    } catch (requestError) {
+      setPokemonData([]);
+      setTypePokemon('');
+      setError('Pokemon nao encontrado. Tente outro nome ou numero.');
+    } finally {
+      setLoading(false);
     }
   }, [pokemon]);
 
@@ -47,11 +36,12 @@ function PokedexComponent() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    getPokemon()
+    if (!searchInput.trim()) return;
+    setPokemon(searchInput.trim().toLowerCase());
   }
 
   const handleChange = (e) => {
-    setPokemon(e.target.value.toLowerCase())
+    setSearchInput(e.target.value);
   }
 
 
@@ -65,15 +55,19 @@ function PokedexComponent() {
         {/* <div > */}
           <div className={styles.imagename}>
 
-            <img src="https://upload.wikimedia.org/wikipedia/commons/9/98/International_Pok%C3%A9mon_logo.svg" alt="Pokemon Logo" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/98/International_Pok%C3%A9mon_logo.svg" alt="Logo oficial Pokemon" />
           </div>
           <div className={styles.form}>
-            <form onSubmit={handleSubmit} class="search">
-              <input className={styles.input} onChange={handleChange} type="text" placeholder="nome ou número pokemon " />
-              {/* <button className={styles.button}><IoSearchSharp className={styles.icon}/></button> */}
+            <form onSubmit={handleSubmit} className="search">
+              <input className={styles.input} value={searchInput} onChange={handleChange} type="text" placeholder="nome ou numero pokemon" />
               
             </form>
           </div>
+          {loading && <p>Carregando Pokemon...</p>}
+          {!loading && error && <p>{error}</p>}
+          {!loading && !error && pokemonData.length === 0 && (
+            <p>Nenhum resultado para a busca atual.</p>
+          )}
           {pokemonData.map((item, index) => {
             return (
               <div className={styles.container} key={index}>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://worleysacramento.github.io/sitemap.xml

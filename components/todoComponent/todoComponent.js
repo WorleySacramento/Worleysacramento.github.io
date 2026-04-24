@@ -1,59 +1,99 @@
 import { React, useEffect, useState } from "react";
 import TodoItem from "./todoItem";
 import styles from './todo.module.css'
-import newData from "../../pages/api/getData/newData";
+export default function TodoComponent() {
+  const [todos, setTodos] = useState([]);
+  const [newTodo, setNewTodo] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
 
+  const fetchTodos = async () => {
+    setLoading(true);
+    setError("");
+    try {
+      const response = await fetch("/api/getData");
+      if (!response.ok) {
+        throw new Error("Falha ao carregar tarefas.");
+      }
+      const payload = await response.json();
+      setTodos(payload || []);
+    } catch (requestError) {
+      setError("Nao foi possivel carregar as tarefas.");
+      setTodos([]);
+    } finally {
+      setLoading(false);
+    }
+  };
 
+  useEffect(() => {
+    fetchTodos();
+  }, []);
 
-export default function TodoComponent(props) {
-    const [inputData, setInputData] = useState({});
-    const [data, setData] = useState([]);
-    const [newTodo, setNewTodo] = useState("");
+  const addTodoItem = async () => {
+    if (!newTodo.trim()) return;
 
-    
-    const requestParams = {
+    setSubmitting(true);
+    setError("");
+    try {
+      const response = await fetch("/api/getData/newData", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ data: inputData }),
-    };
-    
-    // async function fetchData() {
-        //     const res = await fetch("../../pages/api/getData/newData",requestParams);
-        //     const newData = await res.json();
-        //     setData(newData);
-        // }
-        // useEffect(() => {
-        //     fetchData();
-        // }, [newTodo]);
-        
-        async function addTodoItem() {
-            if (newTodo === "") return;
-            let tempArr = data;
-            tempArr.push(newTodo);
-            setData([...tempArr])
-            setNewTodo("")
-            const response = await fetch("../../pages/api/getData/newData", requestParams).then((
-                res) => res.json());
-                }
-                // return (
-            // await fetch("../../pages/api/getData/newData", requestParams)
-            // .then(() => newData())
-            // .catch((e) => console.log(e));
-        // }
-        
-        const handleinput = (e) => {
-            setNewTodo(e.target.value);
-            setInputData({
-              ...inputData,
-              newTodo: e.target.value,
-            });
-          };
-          
-          const HandleSubmit = (e) => {
-            console.log(newTodo);
-            addTodoItem();
-            setNewTodo("");
-          };
+        body: JSON.stringify({ data: { newTodo: newTodo.trim() } }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Falha ao adicionar tarefa.");
+      }
+
+      setNewTodo("");
+      await fetchTodos();
+    } catch (requestError) {
+      setError("Nao foi possivel adicionar a tarefa.");
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  const handleToggleTodo = async (id, done) => {
+    setSubmitting(true);
+    setError("");
+    try {
+      const response = await fetch("/api/getData/updateData", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ data: { done }, id }),
+      });
+      if (!response.ok) {
+        throw new Error("Falha ao atualizar tarefa.");
+      }
+      await fetchTodos();
+    } catch (requestError) {
+      setError("Nao foi possivel atualizar a tarefa.");
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  const handleDeleteTodo = async (id) => {
+    setSubmitting(true);
+    setError("");
+    try {
+      const response = await fetch("/api/getData/deleteData", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id }),
+      });
+      if (!response.ok) {
+        throw new Error("Falha ao remover tarefa.");
+      }
+      await fetchTodos();
+    } catch (requestError) {
+      setError("Nao foi possivel remover a tarefa.");
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
     return (
         <div className={styles.maincont}>
@@ -64,18 +104,29 @@ export default function TodoComponent(props) {
                     <input
                         type="text"
                         value={newTodo}
-                        onChange={(e) => handleinput(e)}
+                        onChange={(e) => setNewTodo(e.target.value)}
+                        placeholder="Digite uma tarefa"
                     ></input>
-                    <button onClick={() => HandleSubmit()}>
-                        Add Todo
+                    <button onClick={addTodoItem} disabled={submitting}>
+                        {submitting ? "Salvando..." : "Add Todo"}
                     </button>
                 </div>
             </div>
+            {loading && <p>Carregando tarefas...</p>}
+            {!loading && error && <p>{error}</p>}
+            {!loading && !error && todos.length === 0 && (
+              <p>Nenhuma tarefa cadastrada.</p>
+            )}
             <div>
                 {
-                   
-                    data?.data?.map((todo) => (
-                        <TodoItem key={todo.ref["@ref"].id} todo={todo} />
+                    todos?.map((todo) => (
+                        <TodoItem
+                          key={todo.ref["@ref"].id}
+                          todo={todo}
+                          onToggle={handleToggleTodo}
+                          onDelete={handleDeleteTodo}
+                          disabled={submitting}
+                        />
                     ))
                 }
             </div>

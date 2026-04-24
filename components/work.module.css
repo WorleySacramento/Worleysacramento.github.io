@@ -23,11 +23,12 @@
     align-items: center;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 10px 5px;
+    gap: 14px 10px;
     background-color: #17171700;
     padding: 10px 5px 10px 15px;
     overflow-y: auto;
     border: 1px solid #41414175;
+    border-radius: 10px;
 }
 
 .link {
@@ -52,6 +53,55 @@
     padding: 1rem;
 }
 
+.projectContent {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-align: left;
+    font-size: 13px;
+    line-height: 1.35;
+    padding: 12px;
+}
+
+.projectContent p {
+    margin: 0;
+}
+
+.ctaRow {
+    margin-top: auto;
+    display: flex;
+    gap: 8px;
+}
+
+.ctaButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ffffff66;
+    border-radius: 6px;
+    color: #fff;
+    text-decoration: none;
+    padding: 6px 10px;
+    font-size: 12px;
+}
+
+.ctaButton:hover,
+.ctaButton:focus-visible {
+    border-color: #fff;
+    background: #ffffff1a;
+}
+
+.ctaButton:active {
+    transform: scale(0.98);
+}
+
+.progressWrap {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+}
+
 @media (max-width: 700px) {
     .section {
         background-color: transparent;
@@ -69,6 +119,11 @@
     .paragrafo {
         margin-top: 2rem;
         padding: 1rem;
+    }
+
+    .projectContent {
+        font-size: 12px;
+        padding: 8px;
     }
 
     .containersection {
@@ -133,6 +188,8 @@
 
 .section h3 {
     margin-top: 10px;
+    font-size: 1.05rem;
+    letter-spacing: 0.02em;
 }
 
 
@@ -142,10 +199,14 @@
     text-align: center;
     transition: transform 0.6s;
     transform-style: preserve-3d;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.22);
 }
 
 .section:hover .sectionInner {
+    transform: rotateY(180deg);
+}
+
+.section:focus-within .sectionInner {
     transform: rotateY(180deg);
 }
 

@@ -1,65 +1,22 @@
-import { React, useState } from "react";
-import styles from "@/styles/Home.module.css";
-import deleteData from "../../pages/api/getData/deleteData"
+import React from "react";
+import styles from "./todo.module.css";
 
-function TodoItem({todo}) {
-    const [isChecked, setIsChecked] = useState(false);
-    const [done, isDone] = useState(true);
-    const [aDelete, isDeleted] = useState("");
-    const [inputData, setInputData] = useState({});
-    let d = "";
-  
-    const handlecheck = async () => {
-        isDone(!todo.data.done);
-        let c = !todo.data.done;
-        isDeleted(todo.ref["@ref"].id);
-        d = todo.ref["@ref"].id;
-        let g = {
-          ...inputData,
-          done: c,
-        };
-        await fetch("../../pages/api/getData/updateData", {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-      
-          body: JSON.stringify({ data: g, id: d }),
-        })
-          .then(() => deleteData())
-          .catch((e) => console.log(e));
-      };
-      
-      const handleDelete = () => {
-        d = todo.ref["@ref"].id;
-        isDeleted(todo.ref["@ref"].id);
-        deleteItem();
-      };
-      
-      async function deleteItem() {
-        await fetch("../../pages/api/getData/deleteData", {
-          method: "DELETE",
-          headers: { "Content-Type": "application/json" },
-      
-          body: JSON.stringify({ id: d }),
-        })
-          .then(() => deleteData())
-          .catch((e) => console.log(e));
-      }
- 
-
+function TodoItem({ todo, onToggle, onDelete, disabled }) {
+  const todoId = todo.ref["@ref"].id;
 
   return (
     <div>
       <span className={styles.eachtodo}>
         <p className={styles.text}>{todo.data.task}</p>
         <div>
-        <input
+          <input
             type="checkbox"
             className={styles.toggle}
-            defaultChecked={todo.data.done}
-            onChange={handlecheck}
-            onClick={() => setIsChecked(!isChecked)}
+            checked={todo.data.done}
+            onChange={() => onToggle(todoId, !todo.data.done)}
+            disabled={disabled}
           />
-          <button onClick={handleDelete}>Delete</button>
+          <button onClick={() => onDelete(todoId)} disabled={disabled}>Delete</button>
         </div>
       </span>
     </div>

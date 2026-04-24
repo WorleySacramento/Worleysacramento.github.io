@@ -1,63 +1,103 @@
 /* eslint-disable @next/next/no-img-element */
-/* eslint-disable jsx-a11y/alt-text */
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import styles from './rm.module.css'
-import Image from 'next/image';
 
-import {IoSearchSharp} from "react-icons/io5";
-
-
-
-
-export default function RickMortComponent( params) {
-  const [query, setQuery] = useState('')
+export default function RickMortComponent() {
+  const [query, setQuery] = useState('morty')
   const [characters, setCharacters] = useState([])
-  const [alive, setAlive] = useState(Boolean)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
+  const [characterList, setCharacterList] = useState([])
+  const [loadingList, setLoadingList] = useState(false)
+
+  const fetchCharacters = async (name) => {
+    setLoading(true)
+    setError('')
+    try {
+      const { data } = await axios.get(`/api/rickmorty?name=${encodeURIComponent(name)}`)
+      setCharacters(data.results || [])
+    } catch (requestError) {
+      setCharacters([])
+      setError('Nenhum personagem encontrado com esse nome.')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const fetchAllCharacters = async () => {
+    setLoadingList(true)
+    try {
+      const { data } = await axios.get('/api/rickmorty-all?page=1')
+      setCharacterList(data.results || [])
+    } catch (err) {
+      console.error('Erro ao buscar lista de personagens:', err)
+      setCharacterList([])
+    } finally {
+      setLoadingList(false)
+    }
+  }
 
   useEffect(() => {
-  const fetchData = async () =>{
-try {
-const {data} = await axios.get(`https://rickandmortyapi.com/api/character/?name=${query}`)
+    fetchCharacters('morty')
+    fetchAllCharacters()
+  }, []);
 
-setCharacters(data.results)
-console.log(data, 'Aquii')
-}
-catch(error){
-  console.error(error);
-}
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    if (!query.trim()) return
+    fetchCharacters(query.trim())
+  }
 
-}
-
-fetchData()
-}, [query]);
-
-const handleSubmit = (event) =>{
-  event.preventDefault()
-
-  const result = fetchData(characterId)
-  console.log(result, 'Aquii Tambem')
-
-}
+  const handleSelectCharacter = (name) => {
+    setQuery(name)
+    fetchCharacters(name)
+  }
 
   
   return (
     <div>
       <div className={styles.title}>
-        <img className={styles.imgTitle} src='/images/Rick_and_Morty.svg'/>
+        <img className={styles.imgTitle} src='/images/Rick_and_Morty.svg' alt='Logo do Rick and Morty' />
       </div>
       <div className={styles.form}>
-            <form  class="search">
+            <form onSubmit={handleSubmit} className="search">
               <input className={styles.input} value={query} onChange={event => setQuery(event.target.value)} type="text" placeholder="Personagem " />
-              {/* <button className={styles.button}><IoSearchSharp className={styles.icon}/></button> */}
               
             </form>
           </div>
+
+          <div className={styles.suggestionsContainer}>
+            <h2 className={styles.suggestionsTitle}>Personagens Disponíveis</h2>
+            {loadingList && <p className={styles.loadingText}>Carregando personagens...</p>}
+            {!loadingList && characterList.length > 0 && (
+              <ul className={styles.characterList}>
+                {characterList.map((char) => (
+                  <li key={char.id} className={styles.characterItem}>
+                    <button
+                      className={styles.characterButton}
+                      onClick={() => handleSelectCharacter(char.name)}
+                      title={char.name}
+                    >
+                      <img src={char.image} alt={char.name} className={styles.characterThumb} />
+                      <span className={styles.characterName}>{char.name}</span>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+
+          {loading && <p>Carregando personagens...</p>}
+          {!loading && error && <p>{error}</p>}
+          {!loading && !error && characters.length === 0 && (
+            <p>Nenhum personagem para exibir.</p>
+          )}
           <div className={styles.container}>
 {characters.map(item => ( 
           <div className={styles.content} key={item.id} >
         <div >
-            <img className={styles.image} src={item.image}/>
+            <img className={styles.image} src={item.image} alt={`Personagem ${item.name}`} />
         </div>
             <div className={styles.main}>
                 <div className={styles.column}>Nome: <span className={styles.name}>{item.name}</span> </div>
