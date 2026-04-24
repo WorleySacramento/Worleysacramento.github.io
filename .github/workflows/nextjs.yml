@@ -75,8 +75,6 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
-      - name: Static HTML export with Next.js
-        run: ${{ steps.detect-package-manager.outputs.runner }} next export
       - name: Verify export output
         run: |
           echo "Checking if ./out directory exists..."
@@ -85,7 +83,9 @@ jobs:
             ls -la ./out | head -20
           else
             echo "✗ ./out directory NOT found!"
+            echo "Current directory contents:"
             ls -la
+            find . -type d -name "out" -o -type d -name ".next" | head -10
             exit 1
           fi
       - name: Upload artifact
