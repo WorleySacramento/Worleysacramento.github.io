@@ -15,7 +15,7 @@ export default function RickMortComponent() {
     setLoading(true)
     setError('')
     try {
-      const { data } = await axios.get(`https://rickandmortyapi.com/api/character/?name=${encodeURIComponent(name)}`)
+      const { data } = await axios.get(`/api/rickmorty?name=${encodeURIComponent(name)}`)
       setCharacters(data.results || [])
     } catch (requestError) {
       setCharacters([])
@@ -28,7 +28,7 @@ export default function RickMortComponent() {
   const fetchAllCharacters = async () => {
     setLoadingList(true)
     try {
-      const { data } = await axios.get('https://rickandmortyapi.com/api/character?page=1')
+      const { data } = await axios.get('/api/rickmorty-all?page=1')
       setCharacterList(data.results || [])
     } catch (err) {
       console.error('Erro ao buscar lista de personagens:', err)
