@@ -10,6 +10,8 @@ function PokedexComponent() {
   const [typePokemon, setTypePokemon] = useState('')
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [pokemonList, setPokemonList] = useState([]);
+  const [loadingList, setLoadingList] = useState(false);
 
   const getPokemon = useCallback(async () => {
     setLoading(true);
@@ -44,6 +46,28 @@ function PokedexComponent() {
     setSearchInput(e.target.value);
   }
 
+  const fetchPokemonList = async () => {
+    setLoadingList(true);
+    try {
+      const { data } = await axios.get('/api/pokemon-list?limit=20&offset=0');
+      setPokemonList(data.results || []);
+    } catch (err) {
+      console.error('Erro ao buscar lista de pokémons:', err);
+      setPokemonList([]);
+    } finally {
+      setLoadingList(false);
+    }
+  }
+
+  const handleSelectPokemon = (name) => {
+    setSearchInput(name);
+    setPokemon(name.toLowerCase());
+  }
+
+  useEffect(() => {
+    fetchPokemonList();
+  }, []);
+
 
 
 
@@ -63,6 +87,26 @@ function PokedexComponent() {
               
             </form>
           </div>
+
+          <div className={styles.pokemonListContainer}>
+            <h2 className={styles.pokemonListTitle}>Pokémons Populares</h2>
+            {loadingList && <p className={styles.loadingText}>Carregando pokémons...</p>}
+            {!loadingList && pokemonList.length > 0 && (
+              <ul className={styles.pokemonNameList}>
+                {pokemonList.map((poke) => (
+                  <li key={poke.name} className={styles.pokemonNameItem}>
+                    <button
+                      className={styles.pokemonNameButton}
+                      onClick={() => handleSelectPokemon(poke.name)}
+                    >
+                      {poke.name}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+
           {loading && <p>Carregando Pokemon...</p>}
           {!loading && error && <p>{error}</p>}
           {!loading && !error && pokemonData.length === 0 && (
